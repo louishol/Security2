@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Security 2</title>
+		<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	</head>
+
+	<body>
+
+	<h1>Security 2 - Laatste opdracht</h1> <br>
+	<h3>Vul hier een naam, wachtwoord en een geheime text in</h3>
+
+	<br>
+	
+	<br>
+	<h5>Klik <a href="decrypt.html">hier</a> om je geheim te onthullen</h5>
+	<br>
+
+	<fieldset>
+		<legend>Informatie</legend>
+		<p>Naam :  <input type="text" name="Name" id="name"/></p>
+		<p>Geheime text :  <textarea id="text"></textarea></p>
+		<p>Wachtwoord :  <input type="text" name="Name" id="ww"/></p>
+	</fieldset>
+	</body>
+	<br></br>
+	<input type="submit" value="Verstuur" id="submit"/>
+</html>
+
+<script type="text/javascript">
+	
+	$("#submit").on("click", function(){
+		var naam = $("#name").val();
+		var text = $("#text").val();
+		var ww = $("#ww").val();
+		var encrypted = CryptoJS.AES.encrypt(text, naam + " " +ww);
+		localStorage.setItem("message", encrypted);
+		alert("Geheime text is opgeslagen, je kunt hem ontcijferen d.m.v. je naam en wachtwoord in te typen");	
+	});
+
+</script>
